@@ -40,10 +40,10 @@ char *directoryservices[]= {
 		};
 
 char *miscservices[]= {
-		"^Calendar",
+		"^Calendar ",
 		"^Ascii table",
 		"^System information",
-		"s^Huffle",
+		"s^Huffle ",
 		"^Memory size",
 		"re^Turn to main menu",
 		};
@@ -751,10 +751,9 @@ getfileattb()
 	menubox(6,5,16,60,112,66);
 
 	writestring("	Get file attribute services	",22,14,112);
-
 	writestring("Enter name of the file:",7,8,112);
 	size(6,7);
-	gotoxy(29,8);
+	gotoxy(32,8);
 	gets(filename);
 	size(32,0);
 
@@ -775,7 +774,7 @@ getfileattb()
 		switch(oo.x.ax)
 		{
 			case 2:
-				writestring("File neot found!",9,8,112);
+				writestring("File not found!",9,8,112);
 				break;
 			case 3:
 				writestring("Invalid path!",9,8,112);
@@ -1076,7 +1075,7 @@ decryptfile()
 
 	writestring("Enter the source file name:",7,8,112);
 	size(6,7);
-	gotoxy(33,8);
+	gotoxy(37,8);
 	gets(sfile);
 	size(32,0);
 
@@ -1350,7 +1349,7 @@ displayfile()
 
 	writestring("Enter name of the file:",6,8,112);
 	size(6,7);
-	gotoxy(29,7);
+	gotoxy(33,7);
 	gets(filename);
 	size(32,0);
 
@@ -1706,7 +1705,6 @@ listdir()
 				writestring("<DIR>",row,col+15,112);
 
 			done=findnext(&file);
-
 			if(row==18)
 			{
 				row=8;
@@ -1789,8 +1787,6 @@ dirtree()
 	writestring("T",6,2,attb);
 
 	tree("*.*");
-	printf(" hai i am here");
-	sleep(5);
 	chdir(current_dir);
 
 	writestring("	Presss any key to return	",22,14,112);
@@ -1908,10 +1904,7 @@ char *ptr;
 			path[len-1]='\0';
 		}
 	}
-printf("i am here\n");
-sleep(5);
 }
-
 calendar()
 {
 	char *months[]={
@@ -1975,9 +1968,9 @@ calendar()
 		menubox(5,5,20,70,112,66);
 		writestring(months[m-1],6,19,112);
 		itoa(y,str1,10);
-		writestring(str1,6,29,112);
+		writestring(str1,6,30,112);
 
-		writestring("Sun   Mon   Tue   Wed   Thu   Fri   Sat",8,7,112);
+		writestring("Mon   Tue   Wed   Thu   Fri   Sat   Sun",8,7,112);
 
 		col=7+firstday*6;
 
@@ -2213,7 +2206,7 @@ shuffle()
 {
 	int r=3,c=3,t,flag,areareqd;
 
-	int no_moves=0,x;
+	int no_moves=0;
 	char *p,str[5];
 
 	areareqd=(25-0+1)*(80-0+1)*2;
@@ -2231,7 +2224,7 @@ shuffle()
 	menubox(5,14,19,65,112,66);
 
 	writestring("	Video game service	",22,20,112);
-	sleep(1);
+
 	shufflebox();
 
 	writestring("Hit arrow keys to shift numbers",16,23,112);
@@ -2240,7 +2233,7 @@ shuffle()
       while(1)
 	{
 		display();
-		sleep(1);
+
 		getkey();
 
 		switch(scan)
@@ -2286,7 +2279,7 @@ shuffle()
 				if(c!=0)
 				{
 					t=num[r][c];
-					num[c][r]=num[r][c-1];
+					num[r][c]=num[r][c-1];
 					num[r][c-1]=t;
 					c--;
 
@@ -2376,7 +2369,7 @@ display()
 		for(j=0;j<=3;j++)
 		{
 			if(num[i][j]==0)
-				writestring(" ",row,col,112);
+				writestring("  ",row,col,112);
 			else
 			{
 				itoa(num[i][j],str,10);
@@ -2456,20 +2449,20 @@ logo()
 			writechar(i,j,176,7);
 	}
 
-	writestring("	Designed & Written	",13,26,112);
-	writestring("	By	",14,26,112);
-	writestring("	Govamsh Sai	",15,26,112);
-	writestring("	At	",16,26,112);
-	writestring("	vidyanagar	",17,26,112);
-	writestring("	1st line ext	",18,26,112);
-	writestring("	ph 7306707652	",19,26,112);
-	writestring("	press any key	",22,26,112);
+	writestring("	Assembled from various sources	",13,26,112);
+	writestring("	By				",14,26,112);
+	writestring("	Govamsh Sai			",15,26,112);
+	writestring("	At				",16,26,112);
+	writestring("	vidyanagar,1st lane extn	",17,26,112);
+	writestring("	Guntur				",18,26,112);
+	writestring("	ph 9490520419			",19,26,112);
+	writestring("	press any key			",22,26,112);
 
-	writestring("				",3,5,77);
-	writestring("** ** ****** **  ****** *** *** ****** ******** *****",4,5,77);
-	writestring("** ** **  ** ** ** * * ** **  **  **  **",5,5,77);
-	writestring("** ** **  ** ** ** *** ** **  **  **",6,5,77);
-	writestring("****** ***** **   ***** ** * ** ***** ** ****",7,5,77);
+	writestring("					",3,5,77);
+	writestring("Took reference from google.com ** ** ****** **",4,5,77);
+	writestring("and knowledge from stackoverflow.com    **  **",5,5,77);
+	writestring("including syntax from C Projects ** **  **  **",6,5,77);
+	writestring("*** -from yeshwant kanetkar * ** ***** ** ****",7,5,77);
 	writestring("** ** **  **  ** ** * ** ** * ** **  **",8,5,77);
 	writestring("** ** ** ** **   *** ***  *** ** * *  ***",9,5,77);
 	writestring("** ** ****** ****** ***   **  **** ***  ***",10,5,77);
